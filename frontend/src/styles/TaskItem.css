@@ -1,0 +1,80 @@
+.task-card {
+  background: white;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  margin: 10px;
+  padding: 20px;
+  min-height: 220px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.task-card.completed {
+  opacity: 0.75;
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.task-card-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.task-description {
+  margin: 16px 0;
+  line-height: 1.5;
+}
+
+.task-status {
+  font-weight: 600;
+}
+
+.priority-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.priority-badge.low {
+  background: #e8f5e9;
+}
+
+.priority-badge.medium {
+  background: #fff3cd;
+}
+
+.priority-badge.high {
+  background: #fdecea;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.task-actions button {
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.task-actions button:hover {
+  background: #f3f3f3;
+}

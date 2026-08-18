@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTasks } from "./services/taskService";
 import TaskList from "./components/TaskList";
+import "./styles/App.css";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -32,8 +33,12 @@ const App = () => {
 
   return (
     <div>
-      <h1>Task Manager</h1>
-
+      <header className="header">
+        <div>
+          <h1>Task Management</h1>
+          <p>Organize and track your tasks</p>
+        </div>
+      </header>
       <TaskList tasks={tasks} />
     </div>
   );

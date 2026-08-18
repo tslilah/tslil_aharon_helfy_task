@@ -9,6 +9,7 @@ import {
 import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import Modal from "./components/Modal";
+import TaskFilter from "./components/TaskFilter";
 import "./styles/App.css";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     const loadTasks = async () => {
@@ -113,6 +115,18 @@ const App = () => {
     setIsFormOpen(false);
   };
 
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "completed") {
+      return task.completed;
+    }
+
+    if (filter === "pending") {
+      return !task.completed;
+    }
+
+    return true;
+  });
+
   return (
     <div>
       <header className="header">
@@ -149,8 +163,9 @@ const App = () => {
           </div>
         </Modal>
       )}
+      <TaskFilter filter={filter} onFilterChange={setFilter} />
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
         onToggle={handleToggle}
         onEdit={handleEdit}
         onDelete={handleDelete}

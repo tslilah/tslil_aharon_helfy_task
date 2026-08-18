@@ -1,16 +1,49 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple Task Management application built with React, Node.js, and Express.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Create tasks
+- Edit tasks
+- Delete tasks
+- Mark tasks as completed or pending
+- Filter tasks by status
+- Task priority levels
+- Endless animated task carousel
+- Responsive design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Node.js
+- Express.js
+- CSS
 
-## Expanding the Oxlint configuration
+## Backend Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+cd backend
+npm install
+npm start
+
+## Frontend Setup
+
+cd frontend
+npm install
+npm start
+
+
+## API Endpoints
+
+- `GET /api/tasks` - Get all tasks
+- `POST /api/tasks` - Create a new task
+- `PUT /api/tasks/:id` - Update an existing task
+- `DELETE /api/tasks/:id` - Delete a task
+- `PATCH /api/tasks/:id/toggle` - Toggle task completion status
+
+
+## Time Spent
+
+Backend: ~60 minutes
+Frontend: ~1.5 hours
+Styling and testing: ~50 minutes

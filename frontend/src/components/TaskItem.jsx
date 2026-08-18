@@ -17,8 +17,12 @@ const TaskItem = ({ task, onToggle, onEdit, onDelete }) => {
       <p className="task-status">{task.completed ? "Completed" : "Pending"}</p>
 
       <div className="task-actions">
-        <button type="button" onClick={() => onToggle(task.id)}>
-          {task.completed ? "Pending" : "Completed"}
+        <button
+          type="button"
+          className="toggle-button"
+          onClick={() => onToggle(task.id)}
+        >
+          {task.completed ? "Mark Pending" : "Mark Completed"}
         </button>
 
         <button type="button" onClick={() => onEdit(task)}>

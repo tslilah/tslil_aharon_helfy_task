@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import TaskItem from "./TaskItem";
 import "../styles/TaskList.css";
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, onToggle, onEdit, onDelete }) => {
   const trackRef = useRef(null);
   const firstSetRef = useRef(null);
 
@@ -55,7 +55,12 @@ const TaskList = ({ tasks }) => {
   if (tasks.length === 1) {
     return (
       <div className="single-task">
-        <TaskItem task={tasks[0]} />
+        <TaskItem
+          task={tasks[0]}
+          onToggle={onToggle}
+          onEdit={onEdit}
+          onDelete={onDelete}
+        />
       </div>
     );
   }
@@ -67,7 +72,12 @@ const TaskList = ({ tasks }) => {
           <div className="carousel-set" ref={firstSetRef}>
             {tasks.map((task) => (
               <div className="carousel-slide" key={`first-${task.id}`}>
-                <TaskItem task={task} />
+                <TaskItem
+                  task={task}
+                  onToggle={onToggle}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                />
               </div>
             ))}
           </div>
@@ -75,7 +85,12 @@ const TaskList = ({ tasks }) => {
           <div className="carousel-set" aria-hidden="true">
             {tasks.map((task) => (
               <div className="carousel-slide" key={`clone-${task.id}`}>
-                <TaskItem task={task} />
+                <TaskItem
+                  task={task}
+                  onToggle={onToggle}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                />
               </div>
             ))}
           </div>

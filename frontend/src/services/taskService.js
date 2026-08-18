@@ -9,3 +9,25 @@ export const getTasks = async () => {
 
   return response.json();
 };
+
+export const toggleTask = async (id) => {
+  const response = await fetch(`${API_URL}/${id}/toggle`, {
+    method: "PATCH",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update task status");
+  }
+
+  return response.json();
+};
+
+export const deleteTask = async (id) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete task");
+  }
+};

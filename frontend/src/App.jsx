@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTasks } from "./services/taskService";
+import { getTasks, toggleTask, deleteTask } from "./services/taskService";
 import TaskList from "./components/TaskList";
 import "./styles/App.css";
 
@@ -31,6 +31,40 @@ const App = () => {
     return <p>{error}</p>;
   }
 
+  const handleToggle = async (id) => {
+    try {
+      const updatedTask = await toggleTask(id);
+
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => (task.id === id ? updatedTask : task))
+      );
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this task?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      await deleteTask(id);
+
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleEdit = (task) => {
+    console.log("Edit task:", task);
+  };
+
   return (
     <div>
       <header className="header">
@@ -39,7 +73,12 @@ const App = () => {
           <p>Organize and track your tasks</p>
         </div>
       </header>
-      <TaskList tasks={tasks} />
+      <TaskList
+        tasks={tasks}
+        onToggle={handleToggle}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
     </div>
   );
 };

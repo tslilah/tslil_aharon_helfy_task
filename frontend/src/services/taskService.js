@@ -31,3 +31,37 @@ export const deleteTask = async (id) => {
     throw new Error("Failed to delete task");
   }
 };
+
+export const createTask = async (taskData) => {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(taskData),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Failed to create task");
+  }
+
+  return response.json();
+};
+
+export const updateTask = async (id, taskData) => {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(taskData),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Failed to update task");
+  }
+
+  return response.json();
+};

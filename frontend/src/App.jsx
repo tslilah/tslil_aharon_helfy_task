@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTasks } from "./services/taskService";
+import TaskList from "./components/TaskList";
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -29,27 +30,11 @@ const App = () => {
     return <p>{error}</p>;
   }
 
-  if (tasks.length === 0) {
-    return (
-      <div>
-        <h1>Task Manager</h1>
-        <p>No tasks yet.</p>
-      </div>
-    );
-  }
-
   return (
     <div>
       <h1>Task Manager</h1>
 
-      {tasks.map((task) => (
-        <div key={task.id}>
-          <h2>{task.title}</h2>
-          <p>{task.description}</p>
-          <p>{task.priority}</p>
-          <p>{task.completed ? "Completed" : "Pending"}</p>
-        </div>
-      ))}
+      <TaskList tasks={tasks} />
     </div>
   );
 };
